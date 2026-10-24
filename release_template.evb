@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="windows-1252"?>
+<?xml version="1.0" encoding="windows-1252"?>
 <>
   <InputFile>C:\Windows\system32\notepad.exe</InputFile>
   <OutputFile>D:\boxed.exe</OutputFile>
@@ -18,7 +18,7 @@
           <File>
             <Type>2</Type>
             <Name>dxcompiler.dll</Name>
-            <File>D:\Extend_npm\GH-DesktopToCN\out\install\x64-release\dxcompiler.dll</File>
+            <File>D:\Extend\GH-DesktopToCN\out\install\x64-release\dxcompiler.dll</File>
             <ActiveX>False</ActiveX>
             <ActiveXInstall>False</ActiveXInstall>
             <Action>0</Action>
@@ -30,7 +30,7 @@
           <File>
             <Type>2</Type>
             <Name>dxil.dll</Name>
-            <File>D:\Extend_npm\GH-DesktopToCN\out\install\x64-release\dxil.dll</File>
+            <File>D:\Extend\GH-DesktopToCN\out\install\x64-release\dxil.dll</File>
             <ActiveX>False</ActiveX>
             <ActiveXInstall>False</ActiveXInstall>
             <Action>0</Action>
@@ -50,7 +50,7 @@
               <File>
                 <Type>2</Type>
                 <Name>qtuiotouchplugin.dll</Name>
-                <File>D:\Extend_npm\GH-DesktopToCN\out\install\x64-release\generic\qtuiotouchplugin.dll</File>
+                <File>D:\Extend\GH-DesktopToCN\out\install\x64-release\generic\qtuiotouchplugin.dll</File>
                 <ActiveX>False</ActiveX>
                 <ActiveXInstall>False</ActiveXInstall>
                 <Action>0</Action>
@@ -64,7 +64,7 @@
           <File>
             <Type>2</Type>
             <Name>GitHubDesktopToCN.exe</Name>
-            <File>D:\Extend_npm\GH-DesktopToCN\out\install\x64-release\GitHubDesktopToCN.exe</File>
+            <File>D:\Extend\GH-DesktopToCN\out\install\x64-release\GitHubDesktopToCN.exe</File>
             <ActiveX>False</ActiveX>
             <ActiveXInstall>False</ActiveXInstall>
             <Action>0</Action>
@@ -84,7 +84,7 @@
               <File>
                 <Type>2</Type>
                 <Name>qsvgicon.dll</Name>
-                <File>D:\Extend_npm\GH-DesktopToCN\out\install\x64-release\iconengines\qsvgicon.dll</File>
+                <File>D:\Extend\GH-DesktopToCN\out\install\x64-release\iconengines\qsvgicon.dll</File>
                 <ActiveX>False</ActiveX>
                 <ActiveXInstall>False</ActiveXInstall>
                 <Action>0</Action>
@@ -98,7 +98,7 @@
           <File>
             <Type>2</Type>
             <Name>icuuc.dll</Name>
-            <File>D:\Extend_npm\GH-DesktopToCN\out\install\x64-release\icuuc.dll</File>
+            <File>D:\Extend\GH-DesktopToCN\out\install\x64-release\icuuc.dll</File>
             <ActiveX>False</ActiveX>
             <ActiveXInstall>False</ActiveXInstall>
             <Action>0</Action>
@@ -118,7 +118,7 @@
               <File>
                 <Type>2</Type>
                 <Name>qgif.dll</Name>
-                <File>D:\Extend_npm\GH-DesktopToCN\out\install\x64-release\imageformats\qgif.dll</File>
+                <File>D:\Extend\GH-DesktopToCN\out\install\x64-release\imageformats\qgif.dll</File>
                 <ActiveX>False</ActiveX>
                 <ActiveXInstall>False</ActiveXInstall>
                 <Action>0</Action>
@@ -130,7 +130,7 @@
               <File>
                 <Type>2</Type>
                 <Name>qico.dll</Name>
-                <File>D:\Extend_npm\GH-DesktopToCN\out\install\x64-release\imageformats\qico.dll</File>
+                <File>D:\Extend\GH-DesktopToCN\out\install\x64-release\imageformats\qico.dll</File>
                 <ActiveX>False</ActiveX>
                 <ActiveXInstall>False</ActiveXInstall>
                 <Action>0</Action>
@@ -142,7 +142,7 @@
               <File>
                 <Type>2</Type>
                 <Name>qjpeg.dll</Name>
-                <File>D:\Extend_npm\GH-DesktopToCN\out\install\x64-release\imageformats\qjpeg.dll</File>
+                <File>D:\Extend\GH-DesktopToCN\out\install\x64-release\imageformats\qjpeg.dll</File>
                 <ActiveX>False</ActiveX>
                 <ActiveXInstall>False</ActiveXInstall>
                 <Action>0</Action>
@@ -154,7 +154,7 @@
               <File>
                 <Type>2</Type>
                 <Name>qpdf.dll</Name>
-                <File>D:\Extend_npm\GH-DesktopToCN\out\install\x64-release\imageformats\qpdf.dll</File>
+                <File>D:\Extend\GH-DesktopToCN\out\install\x64-release\imageformats\qpdf.dll</File>
                 <ActiveX>False</ActiveX>
                 <ActiveXInstall>False</ActiveXInstall>
                 <Action>0</Action>
@@ -166,7 +166,7 @@
               <File>
                 <Type>2</Type>
                 <Name>qsvg.dll</Name>
-                <File>D:\Extend_npm\GH-DesktopToCN\out\install\x64-release\imageformats\qsvg.dll</File>
+                <File>D:\Extend\GH-DesktopToCN\out\install\x64-release\imageformats\qsvg.dll</File>
                 <ActiveX>False</ActiveX>
                 <ActiveXInstall>False</ActiveXInstall>
                 <Action>0</Action>
@@ -180,7 +180,7 @@
           <File>
             <Type>2</Type>
             <Name>libcrypto-3-x64.dll</Name>
-            <File>D:\Extend_npm\GH-DesktopToCN\out\install\x64-release\libcrypto-3-x64.dll</File>
+            <File>D:\Extend\GH-DesktopToCN\out\install\x64-release\libcrypto-3-x64.dll</File>
             <ActiveX>False</ActiveX>
             <ActiveXInstall>False</ActiveXInstall>
             <Action>0</Action>
@@ -192,7 +192,7 @@
           <File>
             <Type>2</Type>
             <Name>libssl-3-x64.dll</Name>
-            <File>D:\Extend_npm\GH-DesktopToCN\out\install\x64-release\libssl-3-x64.dll</File>
+            <File>D:\Extend\GH-DesktopToCN\out\install\x64-release\libssl-3-x64.dll</File>
             <ActiveX>False</ActiveX>
             <ActiveXInstall>False</ActiveXInstall>
             <Action>0</Action>
@@ -204,7 +204,7 @@
           <File>
             <Type>2</Type>
             <Name>libssl-4-x64.dll</Name>
-            <File>D:\Extend_npm\GH-DesktopToCN\out\install\x64-release\libssl-4-x64.dll</File>
+            <File>D:\Extend\GH-DesktopToCN\out\install\x64-release\libssl-4-x64.dll</File>
             <ActiveX>False</ActiveX>
             <ActiveXInstall>False</ActiveXInstall>
             <Action>0</Action>
@@ -224,7 +224,7 @@
               <File>
                 <Type>2</Type>
                 <Name>qnetworklistmanager.dll</Name>
-                <File>D:\Extend_npm\GH-DesktopToCN\out\install\x64-release\networkinformation\qnetworklistmanager.dll</File>
+                <File>D:\Extend\GH-DesktopToCN\out\install\x64-release\networkinformation\qnetworklistmanager.dll</File>
                 <ActiveX>False</ActiveX>
                 <ActiveXInstall>False</ActiveXInstall>
                 <Action>0</Action>
@@ -238,7 +238,7 @@
           <File>
             <Type>2</Type>
             <Name>opengl32sw.dll</Name>
-            <File>D:\Extend_npm\GH-DesktopToCN\out\install\x64-release\opengl32sw.dll</File>
+            <File>D:\Extend\GH-DesktopToCN\out\install\x64-release\opengl32sw.dll</File>
             <ActiveX>False</ActiveX>
             <ActiveXInstall>False</ActiveXInstall>
             <Action>0</Action>
@@ -258,7 +258,7 @@
               <File>
                 <Type>2</Type>
                 <Name>qwindows.dll</Name>
-                <File>D:\Extend_npm\GH-DesktopToCN\out\install\x64-release\platforms\qwindows.dll</File>
+                <File>D:\Extend\GH-DesktopToCN\out\install\x64-release\platforms\qwindows.dll</File>
                 <ActiveX>False</ActiveX>
                 <ActiveXInstall>False</ActiveXInstall>
                 <Action>0</Action>
@@ -272,7 +272,7 @@
           <File>
             <Type>2</Type>
             <Name>Qt6Core.dll</Name>
-            <File>D:\Extend_npm\GH-DesktopToCN\out\install\x64-release\Qt6Core.dll</File>
+            <File>D:\Extend\GH-DesktopToCN\out\install\x64-release\Qt6Core.dll</File>
             <ActiveX>False</ActiveX>
             <ActiveXInstall>False</ActiveXInstall>
             <Action>0</Action>
@@ -284,7 +284,7 @@
           <File>
             <Type>2</Type>
             <Name>Qt6Gui.dll</Name>
-            <File>D:\Extend_npm\GH-DesktopToCN\out\install\x64-release\Qt6Gui.dll</File>
+            <File>D:\Extend\GH-DesktopToCN\out\install\x64-release\Qt6Gui.dll</File>
             <ActiveX>False</ActiveX>
             <ActiveXInstall>False</ActiveXInstall>
             <Action>0</Action>
@@ -296,7 +296,7 @@
           <File>
             <Type>2</Type>
             <Name>Qt6Network.dll</Name>
-            <File>D:\Extend_npm\GH-DesktopToCN\out\install\x64-release\Qt6Network.dll</File>
+            <File>D:\Extend\GH-DesktopToCN\out\install\x64-release\Qt6Network.dll</File>
             <ActiveX>False</ActiveX>
             <ActiveXInstall>False</ActiveXInstall>
             <Action>0</Action>
@@ -308,7 +308,7 @@
           <File>
             <Type>2</Type>
             <Name>Qt6Pdf.dll</Name>
-            <File>D:\Extend_npm\GH-DesktopToCN\out\install\x64-release\Qt6Pdf.dll</File>
+            <File>D:\Extend\GH-DesktopToCN\out\install\x64-release\Qt6Pdf.dll</File>
             <ActiveX>False</ActiveX>
             <ActiveXInstall>False</ActiveXInstall>
             <Action>0</Action>
@@ -320,7 +320,7 @@
           <File>
             <Type>2</Type>
             <Name>Qt6Svg.dll</Name>
-            <File>D:\Extend_npm\GH-DesktopToCN\out\install\x64-release\Qt6Svg.dll</File>
+            <File>D:\Extend\GH-DesktopToCN\out\install\x64-release\Qt6Svg.dll</File>
             <ActiveX>False</ActiveX>
             <ActiveXInstall>False</ActiveXInstall>
             <Action>0</Action>
@@ -332,7 +332,7 @@
           <File>
             <Type>2</Type>
             <Name>Qt6Widgets.dll</Name>
-            <File>D:\Extend_npm\GH-DesktopToCN\out\install\x64-release\Qt6Widgets.dll</File>
+            <File>D:\Extend\GH-DesktopToCN\out\install\x64-release\Qt6Widgets.dll</File>
             <ActiveX>False</ActiveX>
             <ActiveXInstall>False</ActiveXInstall>
             <Action>0</Action>
@@ -352,7 +352,7 @@
               <File>
                 <Type>2</Type>
                 <Name>qmodernwindowsstyle.dll</Name>
-                <File>D:\Extend_npm\GH-DesktopToCN\out\install\x64-release\styles\qmodernwindowsstyle.dll</File>
+                <File>D:\Extend\GH-DesktopToCN\out\install\x64-release\styles\qmodernwindowsstyle.dll</File>
                 <ActiveX>False</ActiveX>
                 <ActiveXInstall>False</ActiveXInstall>
                 <Action>0</Action>
@@ -374,7 +374,7 @@
               <File>
                 <Type>2</Type>
                 <Name>qcertonlybackend.dll</Name>
-                <File>D:\Extend_npm\GH-DesktopToCN\out\install\x64-release\tls\qcertonlybackend.dll</File>
+                <File>D:\Extend\GH-DesktopToCN\out\install\x64-release\tls\qcertonlybackend.dll</File>
                 <ActiveX>False</ActiveX>
                 <ActiveXInstall>False</ActiveXInstall>
                 <Action>0</Action>
@@ -386,7 +386,7 @@
               <File>
                 <Type>2</Type>
                 <Name>qopensslbackend.dll</Name>
-                <File>D:\Extend_npm\GH-DesktopToCN\out\install\x64-release\tls\qopensslbackend.dll</File>
+                <File>D:\Extend\GH-DesktopToCN\out\install\x64-release\tls\qopensslbackend.dll</File>
                 <ActiveX>False</ActiveX>
                 <ActiveXInstall>False</ActiveXInstall>
                 <Action>0</Action>
@@ -398,7 +398,7 @@
               <File>
                 <Type>2</Type>
                 <Name>qschannelbackend.dll</Name>
-                <File>D:\Extend_npm\GH-DesktopToCN\out\install\x64-release\tls\qschannelbackend.dll</File>
+                <File>D:\Extend\GH-DesktopToCN\out\install\x64-release\tls\qschannelbackend.dll</File>
                 <ActiveX>False</ActiveX>
                 <ActiveXInstall>False</ActiveXInstall>
                 <Action>0</Action>
@@ -412,7 +412,7 @@
           <File>
             <Type>2</Type>
             <Name>vc_redist.x64.exe</Name>
-            <File>D:\Extend_npm\GH-DesktopToCN\out\install\x64-release\vc_redist.x64.exe</File>
+            <File>D:\Extend\GH-DesktopToCN\out\install\x64-release\vc_redist.x64.exe</File>
             <ActiveX>False</ActiveX>
             <ActiveXInstall>False</ActiveXInstall>
             <Action>0</Action>
@@ -433,40 +433,40 @@
         <Virtual>True</Virtual>
         <Name>Classes</Name>
         <ValueType>0</ValueType>
-        <Value/>
-        <Registries/>
+        <Value />
+        <Registries />
       </Registry>
       <Registry>
         <Type>1</Type>
         <Virtual>True</Virtual>
         <Name>User</Name>
         <ValueType>0</ValueType>
-        <Value/>
-        <Registries/>
+        <Value />
+        <Registries />
       </Registry>
       <Registry>
         <Type>1</Type>
         <Virtual>True</Virtual>
         <Name>Machine</Name>
         <ValueType>0</ValueType>
-        <Value/>
-        <Registries/>
+        <Value />
+        <Registries />
       </Registry>
       <Registry>
         <Type>1</Type>
         <Virtual>True</Virtual>
         <Name>Users</Name>
         <ValueType>0</ValueType>
-        <Value/>
-        <Registries/>
+        <Value />
+        <Registries />
       </Registry>
       <Registry>
         <Type>1</Type>
         <Virtual>True</Virtual>
         <Name>Config</Name>
         <ValueType>0</ValueType>
-        <Value/>
-        <Registries/>
+        <Value />
+        <Registries />
       </Registry>
     </Registries>
   </Registries>
@@ -476,7 +476,7 @@
   <Options>
     <ShareVirtualSystem>False</ShareVirtualSystem>
     <MapExecutableWithTemporaryFile>True</MapExecutableWithTemporaryFile>
-    <TemporaryFileMask/>
+    <TemporaryFileMask />
     <AllowRunningOfVirtualExeFiles>True</AllowRunningOfVirtualExeFiles>
     <ProcessesOfAnyPlatforms>False</ProcessesOfAnyPlatforms>
   </Options>

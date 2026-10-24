@@ -96,14 +96,14 @@
 
 ## 六、常见问题
 
-| 现象                                   | 原因                               | 解决                                                                                                                         |
-| -------------------------------------- | ---------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| 提示"找不到 VsDevCmd.bat"              | Visual Studio 未安装或未在默认路径 | 确保已安装 Visual Studio 或 Build Tools,且位于 `C:\Program Files` 下                                                        |
+| 现象                                   | 原因                               | 解决                                                                                                                  |
+| -------------------------------------- | ---------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| 提示"找不到 VsDevCmd.bat"              | Visual Studio 未安装或未在默认路径 | 确保已安装 Visual Studio 或 Build Tools,且位于 `C:\Program Files` 下                                                  |
 | 提示"找不到合适的 Qt 安装目录"         | Qt 未安装或不符合 `msvc*_64` 结构  | 安装任意版本 Qt(如 5.15.2、6.8.0 等),确保路径为 `C:\Qt\版本号\msvc*_64`,且包含 `msvc*_64` 子目录(例如 `msvc2022_64`); |
-| 配置阶段报"找不到 cli11_proj-src"      | CLI11 下载失败                     | 手动下载 v2.4.1 源码解压到 `out/build/x64-debug/_deps/cli11_proj-src`                                                        |
-| 运行时提示"找不到 libcrypto-3-x64.dll" | OpenSSL DLL 未复制                 | 检查 `openssl-proj\lib` 下是否存在该 DLL,或手动复制到 exe 目录                                                              |
-| VS Code 终端一闪而过                   | 成功时按配置自动关闭               | 临时修改 `tasks.json` 中 `"close": true` 为 `"close": false` 后重试                                                          |
-| Visual Studio 终端一闪而过             | 成功时按配置自动关闭               | 临时修改 `tasks.vs.json` 中 `'\c'` 为 `'\k'` 后重试                                                                          |
+| 配置阶段报"找不到 cli11_proj-src"      | CLI11 下载失败                     | 手动下载 v2.4.1 源码解压到 `out/build/x64-debug/_deps/cli11_proj-src`                                                 |
+| 运行时提示"找不到 libcrypto-3-x64.dll" | OpenSSL DLL 未复制                 | 检查 `openssl-proj\lib` 下是否存在该 DLL,或手动复制到 exe 目录                                                        |
+| VS Code 终端一闪而过                   | 成功时按配置自动关闭               | 临时修改 `tasks.json` 中 `"close": true` 为 `"close": false` 后重试                                                   |
+| Visual Studio 终端一闪而过             | 成功时按配置自动关闭               | 临时修改 `tasks.vs.json` 中 `'\c'` 为 `'\k'` 后重试                                                                   |
 
 ---
 

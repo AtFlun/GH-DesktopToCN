@@ -570,7 +570,7 @@ void MainWindow::onStartConversion()
         if (displayedPath.isEmpty())
         {
             showHandMessageBox(QMessageBox::Warning, "提示",
-                               "请先在"JSON 路径"输入框中填写或浏览选择一个本地 JSON 文件;");
+                               R"MSG(请先在"JSON 路径"输入框中填写或浏览选择一个本地 JSON 文件;)MSG");
             return;
         }
         QFileInfo fileInfo(displayedPath);
