@@ -5,7 +5,7 @@
 格式基于 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.0.0/),
 并且本项目遵循 [语义化版本](https://semver.org/lang/zh-CN);
 
-## [1.0.28] - 2026-10-24
+## [1.0.28] - 2026-10-24 11:42
 
 ### 优化
 - 项目标点已改为以英文标点为主;
