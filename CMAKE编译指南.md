@@ -152,7 +152,7 @@ if defined QT_BASE (
     )
 )
 if not defined QT_DIR (
-    echo 错误: 找不到合适的 Qt 安装目录(需包含 msvc*_64 子目录)
+    echo 错误: 找不到合适的 Qt 安装目录^(需包含 msvc*_64 子目录^)
     exit /b 1
 )
 echo 使用 Qt 目录: %QT_DIR%
@@ -167,6 +167,8 @@ set "CACHE_FILE=%PROJECT_DIR%\%BUILD_DIR%\CMakeCache.txt"
 :: ★ 修改1:exe 实际在构建根目录,不是 Debug 子目录
 set "EXE_FILE=%PROJECT_DIR%\%BUILD_DIR%\GitHubDesktopToCN.exe"
 
+set "PATH_CHANGED="
+set "PROJECT_DIR_FWD=%PROJECT_DIR:\=/%"
 :: 检测无效编译器缓存
 if exist "%CACHE_FILE%" (
     set "NEED_CLEAN=0"
@@ -178,6 +180,23 @@ if exist "%CACHE_FILE%" (
     )
     if "!NEED_CLEAN!"=="1" (
         echo 检测到无效编译器缓存,正在清理...
+        del /f /q "%CACHE_FILE%" 2>nul
+        if exist "%PROJECT_DIR%\%BUILD_DIR%\CMakeFiles" rmdir /s /q "%PROJECT_DIR%\%BUILD_DIR%\CMakeFiles" 2>nul
+        goto :configure
+    )
+)
+
+:: 检测项目目录变更(与 release.bat 保持一致)
+if exist "%CACHE_FILE%" (
+    set "NEED_CLEAN=0"
+    for /f "tokens=*" %%i in ('type "%CACHE_FILE%" ^| findstr /c:"CMAKE_HOME_DIRECTORY:INTERNAL=" 2^>nul') do (
+        set "CACHE_HOME=%%i"
+        set "CACHE_HOME=!CACHE_HOME:*CMAKE_HOME_DIRECTORY:INTERNAL=!"
+        set "CACHE_HOME=!CACHE_HOME:~1!"
+        if /i not "!CACHE_HOME!"=="%PROJECT_DIR_FWD%" set "NEED_CLEAN=1"
+    )
+    if "!NEED_CLEAN!"=="1" (
+        echo 检测到项目目录变更,正在清理缓存...
         del /f /q "%CACHE_FILE%" 2>nul
         if exist "%PROJECT_DIR%\%BUILD_DIR%\CMakeFiles" rmdir /s /q "%PROJECT_DIR%\%BUILD_DIR%\CMakeFiles" 2>nul
         goto :configure
@@ -334,5 +353,5 @@ exit /b 0
 
 ---
 
-**文档版本**:2026-06-01
+**文档版本**:2026-10-24
 **对应脚本版本**:build.bat v2(支持 VS/Qt 自动检测、Ninja 生成器、编译器缓存自动修复)
