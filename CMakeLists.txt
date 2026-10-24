@@ -45,7 +45,7 @@ project ("GitHubDesktopToCN")
 # 永久本地化 FetchContent 下载目录
 set(FETCHCONTENT_BASE_DIR "${CMAKE_SOURCE_DIR}/.fetched" CACHE PATH "Directory where FetchContent downloads are stored")
 
-# 添加 Qt 支持（x64）,需要 Network 用于检查更新
+# 添加 Qt 支持(x64),需要 Network 用于检查更新
 find_package(Qt6 REQUIRED COMPONENTS Widgets Network)
 
 set(CMAKE_AUTOMOC ON)
@@ -58,7 +58,7 @@ include_directories(Utils)
 include_directories(openssl-proj/include)
 
 # ====================== 预汉化文件嵌入开始 ======================
-# 自动收集 prebuilt 目录下的所有文件（包括 localization.json）
+# 自动收集 prebuilt 目录下的所有文件(包括 localization.json)
 file(GLOB_RECURSE PREBUILT_RESOURCE_FILES
      RELATIVE ${CMAKE_SOURCE_DIR}
      ${CMAKE_SOURCE_DIR}/prebuilt/*)
@@ -73,7 +73,7 @@ foreach(file ${PREBUILT_RESOURCE_FILES})
 endforeach()
 file(APPEND ${QRC_PATH} "    </qresource>\n</RCC>\n")
 
-# 收集版本号（子目录名）
+# 收集版本号(子目录名)
 file(GLOB PREBUILT_VERSION_DIRS
      LIST_DIRECTORIES true
      RELATIVE ${CMAKE_SOURCE_DIR}/prebuilt
@@ -97,7 +97,7 @@ add_executable (GitHubDesktopToCN
 
 set_target_properties(GitHubDesktopToCN PROPERTIES WIN32_EXECUTABLE TRUE)
 
-# 链接 OpenSSL 导入库（.lib 文件,用于链接；运行时需要对应的 .dll）
+# 链接 OpenSSL 导入库(.lib 文件,用于链接;运行时需要对应的 .dll)
 target_link_libraries(GitHubDesktopToCN PRIVATE
     ${CMAKE_SOURCE_DIR}/openssl-proj/lib/libssl.lib
     ${CMAKE_SOURCE_DIR}/openssl-proj/lib/libcrypto.lib)
@@ -109,24 +109,26 @@ if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET GitHubDesktopToCN PROPERTY CXX_STANDARD 20)
 endif()
 
-# 安装 OpenSSL 动态库（从项目目录或 Qt 目录）
+# 安装 OpenSSL 动态库(从项目目录或 Qt 目录)
 if(WIN32)
     # 优先使用项目内的 DLL
-    if(EXISTS "${CMAKE_SOURCE_DIR}/openssl-proj/lib/libcrypto-3-x64.dll" AND EXISTS "${CMAKE_SOURCE_DIR}/openssl-proj/lib/libssl-3-x64.dll")
+    if(EXISTS "${CMAKE_SOURCE_DIR}/openssl-proj/lib/libcrypto-3-x64.dll" AND
+       EXISTS "${CMAKE_SOURCE_DIR}/openssl-proj/lib/libssl-3-x64.dll")
         install(FILES
             ${CMAKE_SOURCE_DIR}/openssl-proj/lib/libcrypto-3-x64.dll
             ${CMAKE_SOURCE_DIR}/openssl-proj/lib/libssl-3-x64.dll
             DESTINATION .)
         message(STATUS "已配置从项目 openssl-proj/lib 安装 OpenSSL DLL")
     else()
-        # 后备：从 Qt bin 目录查找
+        # 后备:从 Qt bin 目录查找
         find_file(LIB_CRYPTO_DLL "libcrypto-3-x64.dll" HINTS "${QT6_INSTALL_PREFIX}/bin")
         find_file(LIB_SSL_DLL    "libssl-3-x64.dll"    HINTS "${QT6_INSTALL_PREFIX}/bin")
         if(LIB_CRYPTO_DLL AND LIB_SSL_DLL)
             install(FILES ${LIB_CRYPTO_DLL} ${LIB_SSL_DLL} DESTINATION .)
             message(STATUS "已配置从 Qt bin 目录安装 OpenSSL DLL")
         else()
-            message(WARNING "未找到 OpenSSL DLL,HTTPS 可能不可用；请手动将 libcrypto-3-x64.dll 和 libssl-3-x64.dll 放置于可执行文件目录")
+            message(WARNING "未找到 OpenSSL DLL,HTTPS 可能不可用;"
+                "请手动将 libcrypto-3-x64.dll 和 libssl-3-x64.dll 放置于可执行文件目录")
         endif()
     endif()
 endif()

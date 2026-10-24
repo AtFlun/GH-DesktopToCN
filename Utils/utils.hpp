@@ -19,7 +19,7 @@ class utils
 public:
     static std::string GetEnvVar(const std::string &varName)
     {
-        // Windows API 优先使用宽字符版本，避免编码问题
+        // Windows API 优先使用宽字符版本,避免编码问题
         std::wstring wVarName(varName.begin(), varName.end());
         wchar_t *wValue = _wgetenv(wVarName.c_str());
 
@@ -49,11 +49,11 @@ public:
                                               ? p1.substr(protocolEnd + 3)
                                               : p1;
 
-        // 2. 分割主机和端口（以第一个 : 为界）
+        // 2. 分割主机和端口(以第一个 : 为界)
         size_t colonPos = addrWithoutProtocol.find(':');
         if (colonPos == std::string::npos)
         {
-            std::cerr << "错误：代理地址无端口号！" << std::endl;
+            std::cerr << "错误:代理地址无端口号!" << std::endl;
             return {};
         }
         // 3. 提取主机和端口
@@ -65,7 +65,7 @@ public:
         }
         catch (const std::exception &e)
         {
-            std::cerr << "错误：端口号格式无效 - " << e.what() << std::endl;
+            std::cerr << "错误:端口号格式无效 - " << e.what() << std::endl;
             return {};
         }
         if (port)
@@ -187,7 +187,8 @@ public:
      * @param out 成功后输出读取到的数据
      * @return 是否成功
      */
-    static auto ReadHttpDataString(std::string url_host, std::string params, std::string &out, std::pair<std::string, int> proxy = {}) -> bool
+    static auto ReadHttpDataString(std::string url_host, std::string params,
+                                   std::string &out, std::pair<std::string, int> proxy = {}) -> bool
     {
         httplib::Client cli(url_host);
         if (proxy.second)
@@ -222,7 +223,8 @@ public:
     }
 
     // static auto DownloadHttpResource(std::string url_host, std::string params);
-    static auto UpdateProgram(std::string url_host, std::string params, fs::path Self, int64_t max_size, std::pair<std::string, int> proxy) -> bool
+    static auto UpdateProgram(std::string url_host, std::string params,
+                              fs::path Self, int64_t max_size, std::pair<std::string, int> proxy) -> bool
     {
         fs::path parent_dir = Self.parent_path(); // 文件所在目录
         fs::path exe_name = Self.filename();      // 文件名 包含扩展名,但不包含路径
@@ -235,7 +237,7 @@ public:
         // printf_s(exe_name.string().c_str());        printf_s("\n");
         // printf_s(tmp_file.string().c_str());        printf_s("\n"); return false;
 
-        // 1. 如果临时文件已存在，获取已下载大小（用于断点续传）
+        // 1. 如果临时文件已存在,获取已下载大小(用于断点续传)
         uint64_t downloaded_bytes = 0;
         if (fs::exists(tmp_file))
         {
@@ -244,7 +246,7 @@ public:
 
         if (downloaded_bytes < max_size)
         {
-            // 以 二进制追加模式 打开文件（断点续传关键）
+            // 以 二进制追加模式 打开文件(断点续传关键)
             std::ofstream downfile(tmp_file, std::ios::binary | std::ios::out | std::ios::app);
             if (!downfile.is_open())
             {
@@ -270,7 +272,7 @@ public:
                                {
                 if(data_length > 0 && downfile.is_open()) {
                     downfile.write(data, data_length);
-                    downfile.flush(); // 立即刷入磁盘，不缓存
+                    downfile.flush(); // 立即刷入磁盘,不缓存
                 }
                 return downfile.is_open(); }, [&](uint64_t len, uint64_t total)
                                {
@@ -309,7 +311,7 @@ public:
             NULL,                        // 父窗口句柄
             "open",                      // 操作
             "cmd.exe",                   // 应用程序
-            p.c_str(),                   // 参数（现在是合法的 const char*）
+            p.c_str(),                   // 参数(现在是合法的 const char*)
             parent_dir.string().c_str(), // 工作目录
             SW_SHOW);                    // 显示方式
 
@@ -355,7 +357,9 @@ public:
         if (input.size() != 2)
             throw std::exception("读取 bool 类型值时 input 数组长度必须为两个");
         if (defaultval > (int)input.size() - 1 || defaultval < -1)
-            throw std::exception(std::format("defaultval 必须能够指向 input数组，或者为 -1, defaultval:{}", defaultval).c_str());
+            throw std::exception(std::format("defaultval 必须能够指向 input数组,或者为 -1, defaultval:{}",
+                                             defaultval)
+                                     .c_str());
         while (true)
         {
             // 输出提示

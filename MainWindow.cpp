@@ -139,7 +139,7 @@ void MainWindow::setupUI()
     QVBoxLayout *mainLayout = new QVBoxLayout(central);
 
     QHBoxLayout *row1 = new QHBoxLayout();
-    row1->addWidget(new QLabel("资源目录："));
+    row1->addWidget(new QLabel("资源目录:"));
     m_editBasePath = new QLineEdit();
     row1->addWidget(m_editBasePath);
     m_btnBrowseBase = new QPushButton("浏览...");
@@ -150,7 +150,7 @@ void MainWindow::setupUI()
     QGroupBox *groupJson = new QGroupBox("本地化文件");
     QVBoxLayout *jsonLayout = new QVBoxLayout(groupJson);
     QHBoxLayout *jsonFileRow = new QHBoxLayout();
-    jsonFileRow->addWidget(new QLabel("自定义JSON路径："));
+    jsonFileRow->addWidget(new QLabel("自定义JSON路径:"));
     m_editJsonPath = new QLineEdit();
     jsonFileRow->addWidget(m_editJsonPath);
     m_btnBrowseJson = new QPushButton("浏览...");
@@ -442,7 +442,7 @@ void MainWindow::setBusyState(bool busy, const QString &statusMsg)
     if (busy)
     {
         m_btnStart->setEnabled(false);
-        m_btnStart->setText("汉化中…");
+        m_btnStart->setText("汉化中...");
         m_btnReset->setEnabled(false);
         m_btnUpdate->setEnabled(false);
         m_btnBrowseBase->setEnabled(false);
@@ -468,7 +468,7 @@ void MainWindow::setBusyState(bool busy, const QString &statusMsg)
         m_progressBar->setVisible(false);
     }
 
-    QString msg = statusMsg.isEmpty() ? (busy ? "处理中…" : "就绪") : statusMsg;
+    QString msg = statusMsg.isEmpty() ? (busy ? "处理中..." : "就绪") : statusMsg;
     m_statusLabel->setText(msg);
 }
 
@@ -482,7 +482,7 @@ void MainWindow::onBrowseBasePath()
     {
         m_basePath = p;
         m_editBasePath->setText(dir);
-        appendLog(QString("资源目录已设置为：%1").arg(dir));
+        appendLog(QString("资源目录已设置为:%1").arg(dir));
     }
     else
     {
@@ -498,7 +498,7 @@ void MainWindow::onBrowseJsonPath()
     {
         m_jsonPath = file.toStdString();
         m_editJsonPath->setText(file);
-        appendLog(QString("已选择本地化文件：%1").arg(file));
+        appendLog(QString("已选择本地化文件:%1").arg(file));
     }
 }
 
@@ -511,7 +511,7 @@ void MainWindow::autoDetectLocalJson()
     {
         m_jsonPath = defaultPath.toStdString();
         m_editJsonPath->setText(defaultPath);
-        appendLog(QString("检测到汉化映射文件：%1").arg(defaultPath));
+        appendLog(QString("检测到汉化映射文件:%1").arg(defaultPath));
     }
 }
 
@@ -544,7 +544,7 @@ void MainWindow::onStartConversion()
     {
         showHandMessageBox(QMessageBox::Warning, "提示",
                            "检测到 GitHub Desktop 正在运行,请先关闭后再汉化;");
-        appendLog("错误：GitHub Desktop 正在运行,汉化中止;");
+        appendLog("错误:GitHub Desktop 正在运行,汉化中止;");
         return;
     }
 
@@ -554,23 +554,23 @@ void MainWindow::onStartConversion()
     bool canFast = !m_targetGhVersion.empty() && hasPrebuiltVersion();
     if (canFast)
     {
-        options << QString("⚡ 快速汉化（1秒完成,版本 %1）").arg(m_targetGhVersion.c_str());
+        options << QString("⚡ 快速汉化(1秒完成,版本 %1)").arg(m_targetGhVersion.c_str());
         actions << [this]()
         {
-            appendLog(QString("\n******开始快速汉化,目标版本：%1").arg(m_targetGhVersion.c_str()));
-            setBusyState(true, "正在快速汉化…");
+            appendLog(QString("\n******开始快速汉化,目标版本:%1").arg(m_targetGhVersion.c_str()));
+            setBusyState(true, "正在快速汉化...");
             runTaskInThread([this]()
                             { doDirectReplacement(); });
         };
     }
-    options << "📁 自定义汉化（使用本地 JSON 文件）";
+    options << "📁 自定义汉化(使用本地 JSON 文件)";
     actions << [this]()
     {
         QString displayedPath = m_editJsonPath->text().trimmed();
         if (displayedPath.isEmpty())
         {
             showHandMessageBox(QMessageBox::Warning, "提示",
-                               "请先在“JSON 路径”输入框中填写或浏览选择一个本地 JSON 文件;");
+                               "请先在"JSON 路径"输入框中填写或浏览选择一个本地 JSON 文件;");
             return;
         }
         QFileInfo fileInfo(displayedPath);
@@ -592,19 +592,19 @@ void MainWindow::onStartConversion()
             return;
         }
         m_jsonPath = displayedPath.toStdString();
-        appendLog(QString("\n******开始自定义汉化,JSON 来源：%1").arg(displayedPath));
-        setBusyState(true, "正在自定义汉化…");
+        appendLog(QString("\n******开始自定义汉化,JSON 来源:%1").arg(displayedPath));
+        setBusyState(true, "正在自定义汉化...");
         runTaskInThread([this]()
                         { doCustomConversion(); });
     };
-    options << "🧩 自定义汉化（使用内置 JSON,离线可用）";
+    options << "🧩 自定义汉化(使用内置 JSON,离线可用)";
     actions << [this]()
     {
         if (!loadInternalLocalization())
         {
             showHandMessageBox(QMessageBox::Critical, "错误",
                                "内置 localization.json 加载失败;");
-            appendLog("错误：内置 JSON 加载失败;");
+            appendLog("错误:内置 JSON 加载失败;");
             return;
         }
         if (!showSelectItemsDialog())
@@ -615,7 +615,7 @@ void MainWindow::onStartConversion()
         m_jsonPath.clear();
         m_editJsonPath->clear();
         appendLog("\n******开始使用内置 JSON映射 汉化;");
-        setBusyState(true, "正在自定义汉化…");
+        setBusyState(true, "正在自定义汉化...");
         runTaskInThread([this]()
                         { doCustomConversion(); });
     };
@@ -623,7 +623,7 @@ void MainWindow::onStartConversion()
     QDialog dlg(this);
     dlg.setWindowTitle("选择汉化方式");
     QVBoxLayout *layout = new QVBoxLayout(&dlg);
-    QLabel *label = new QLabel("请选择汉化方式：");
+    QLabel *label = new QLabel("请选择汉化方式:");
     layout->addWidget(label);
     for (int i = 0; i < options.size(); ++i)
     {
@@ -651,13 +651,13 @@ void MainWindow::onResetToEnglish()
     if (!syncAndValidateBasePath())
         return;
     auto reply = showHandMessageBox(QMessageBox::Question, "确认",
-                                    "将从备份文件恢复原始英文界面,确定吗？",
+                                    "将从备份文件恢复原始英文界面,确定吗?",
                                     QMessageBox::Yes | QMessageBox::No,
                                     QMessageBox::No);
     if (reply != QMessageBox::Yes)
         return;
     appendLog("\n******开始恢复英文界面...");
-    setBusyState(true, "正在恢复英文,请稍候…");
+    setBusyState(true, "正在恢复英文,请稍候...");
     runTaskInThread([this]()
                     { doRollback(); });
 }
@@ -665,7 +665,7 @@ void MainWindow::onResetToEnglish()
 void MainWindow::onCheckUpdate()
 {
     appendLog("\n******正在检查更新...");
-    setBusyState(true, "正在检查更新…");
+    setBusyState(true, "正在检查更新...");
 
     auto manager = new QNetworkAccessManager(this);
     QNetworkRequest request(QUrl("https://api.github.com/repos/OpenFlun/GH-DesktopToCN/releases?per_page=1"));
@@ -692,10 +692,10 @@ void MainWindow::onCheckUpdate()
                 }
             }
         } else {
-            appendLog(QString("检查更新网络错误：%1").arg(reply->errorString()));
+            appendLog(QString("检查更新网络错误:%1").arg(reply->errorString()));
         }
 
-        appendLog(QString("检查更新完成,远程版本：%1,当前版本：%2")
+        appendLog(QString("检查更新完成,远程版本:%1,当前版本:%2")
                       .arg(remoteVer, m_currentVersion));
 
         if (remoteVer == "获取失败") {
@@ -710,7 +710,7 @@ void MainWindow::onCheckUpdate()
         if (remote > current) {
             QMessageBox::StandardButton btn = showHandMessageBox(
                 QMessageBox::Information, "检查更新",
-                QString("发现新版本！\n\n远程版本：%1\n当前版本：%2\n\n是否前往下载页面？")
+                QString("发现新版本!\n\n远程版本:%1\n当前版本:%2\n\n是否前往下载页面?")
                     .arg(remoteVer, m_currentVersion),
                 QMessageBox::Yes | QMessageBox::No,
                 QMessageBox::Yes);
@@ -719,7 +719,7 @@ void MainWindow::onCheckUpdate()
             }
         } else {
             showHandMessageBox(QMessageBox::Information, "检查更新",
-                               QString("当前已是最新版本;\n\n远程版本：%1\n当前版本：%2")
+                               QString("当前已是最新版本;\n\n远程版本:%1\n当前版本:%2")
                                    .arg(remoteVer, m_currentVersion));
         } });
 }
@@ -731,7 +731,7 @@ void MainWindow::detectInstallPath()
     std::wstring foundVersion;
     std::wstring foundInstallPath;
 
-    // 要尝试的注册表位置（HKCU + HKLM，32位/64位都覆盖）
+    // 要尝试的注册表位置(HKCU + HKLM,32位/64位都覆盖)
     std::vector<std::wstring> regSubKeys = {
         L"Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\GitHubDesktop",
         L"Software\\WOW6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\GitHubDesktop"};
@@ -757,7 +757,7 @@ void MainWindow::detectInstallPath()
         }
     }
 
-    // 2. 如果 HKCU 没找到，再从 HKLM 尝试
+    // 2. 如果 HKCU 没找到,再从 HKLM 尝试
     if (foundVersion.empty() || foundInstallPath.empty())
     {
         for (const auto &subKey : regSubKeys)
@@ -781,7 +781,7 @@ void MainWindow::detectInstallPath()
         }
     }
 
-    // 3. 如果版本号读到了，但 InstallLocation 是空的，用 %LOCALAPPDATA% 作为回退
+    // 3. 如果版本号读到了,但 InstallLocation 是空的,用 %LOCALAPPDATA% 作为回退
     if (!foundVersion.empty() && foundInstallPath.empty())
     {
         wchar_t *localAppData = nullptr;
@@ -789,22 +789,22 @@ void MainWindow::detectInstallPath()
         {
             foundInstallPath = std::wstring(localAppData) + L"\\GitHubDesktop\\";
             free((void *)localAppData);
-            appendLog(QString("注册表中 InstallLocation 为空，已回退到默认路径：%1")
+            appendLog(QString("注册表中 InstallLocation 为空,已回退到默认路径:%1")
                           .arg(QString::fromStdWString(foundInstallPath)));
         }
     }
 
     if (foundVersion.empty() || foundInstallPath.empty())
     {
-        appendLog("未能从注册表读取到 GitHub Desktop 版本信息，请手动指定资源目录;");
+        appendLog("未能从注册表读取到 GitHub Desktop 版本信息,请手动指定资源目录;");
         return;
     }
 
-    // 4. 智能拼接资源目录（兼容多种目录结构）
+    // 4. 智能拼接资源目录(兼容多种目录结构)
     fs::path basePath;
     bool found = false;
 
-    // 尝试结构1：InstallLocation + "app-版本号\resources\app"
+    // 尝试结构1:InstallLocation + "app-版本号\resources\app"
     fs::path try1 = fs::path(foundInstallPath) / (L"app-" + foundVersion) / L"resources" / L"app";
     if (fs::exists(try1) && fs::exists(try1 / "index.html"))
     {
@@ -812,7 +812,7 @@ void MainWindow::detectInstallPath()
         found = true;
     }
 
-    // 尝试结构2：InstallLocation + "resources\app"（如果 InstallLocation 已经指向 app-版本号 目录）
+    // 尝试结构2:InstallLocation + "resources\app"(如果 InstallLocation 已经指向 app-版本号 目录)
     if (!found)
     {
         fs::path try2 = fs::path(foundInstallPath) / L"resources" / L"app";
@@ -823,7 +823,7 @@ void MainWindow::detectInstallPath()
         }
     }
 
-    // 尝试结构3：InstallLocation 本身就是 resources\app 的父目录（直接包含 index.html）
+    // 尝试结构3:InstallLocation 本身就是 resources\app 的父目录(直接包含 index.html)
     if (!found)
     {
         fs::path try3 = fs::path(foundInstallPath);
@@ -834,7 +834,7 @@ void MainWindow::detectInstallPath()
         }
     }
 
-    // 尝试结构4：从 %LOCALAPPDATA% 暴力搜索最新版本（万一注册表版本号不准）
+    // 尝试结构4:从 %LOCALAPPDATA% 暴力搜索最新版本(万一注册表版本号不准)
     if (!found)
     {
         wchar_t *localAppData = nullptr;
@@ -855,7 +855,7 @@ void MainWindow::detectInstallPath()
                         }
                     }
                 }
-                // 按修改时间排序，取最新的
+                // 按修改时间排序,取最新的
                 std::sort(versionDirs.begin(), versionDirs.end(),
                           [](const fs::path &a, const fs::path &b)
                           {
@@ -874,7 +874,7 @@ void MainWindow::detectInstallPath()
                         {
                             foundVersion = dirName.substr(4);
                         }
-                        appendLog(QString("通过扫描 LocalAppData 自动定位到最新版本：%1")
+                        appendLog(QString("通过扫描 LocalAppData 自动定位到最新版本:%1")
                                       .arg(QString::fromStdWString(foundVersion)));
                         break;
                     }
@@ -889,14 +889,14 @@ void MainWindow::detectInstallPath()
         m_basePath = basePath;
         m_targetGhVersion = QString::fromStdWString(foundVersion).toStdString();
         m_editBasePath->setText(QString::fromStdString(m_basePath.string()));
-        appendLog(QString("✅ 自动检测到 GitHub Desktop 安装路径：%1，版本：%2")
+        appendLog(QString("✅ 自动检测到 GitHub Desktop 安装路径:%1,版本:%2")
                       .arg(QString::fromStdString(m_basePath.string()))
                       .arg(m_targetGhVersion.c_str()));
     }
     else
     {
-        appendLog("❌ 未能自动检测到有效的 GitHub Desktop 资源目录，请手动选择;");
-        appendLog(QString("   尝试过的基路径：%1").arg(QString::fromStdWString(foundInstallPath)));
+        appendLog("❌ 未能自动检测到有效的 GitHub Desktop 资源目录,请手动选择;");
+        appendLog(QString("   尝试过的基路径:%1").arg(QString::fromStdWString(foundInstallPath)));
     }
 }
 
@@ -942,7 +942,7 @@ bool MainWindow::ensureBaseFilesExist()
 {
     if (!fs::exists(m_basePath / "main.js") || !fs::exists(m_basePath / "renderer.js"))
     {
-        appendLog("错误：目标目录缺少 main.js 或 renderer.js;");
+        appendLog("错误:目标目录缺少 main.js 或 renderer.js;");
         QMetaObject::invokeMethod(this, [this]()
                                   { showHandMessageBox(QMessageBox::Critical, "错误",
                                                        "目标目录缺少 main.js 或 renderer.js;"); });
@@ -985,7 +985,7 @@ void MainWindow::patchRendererCss()
     {
         css = "* {\n    white-space: pre-wrap !important;\n}\n" + css;
         utils::WriteFile(cssPath.string(), css);
-        appendLog("已修改 renderer.css（添加 white-space 样式）;");
+        appendLog("已修改 renderer.css(添加 white-space 样式);");
     }
     else
     {
@@ -998,7 +998,7 @@ void MainWindow::doCustomConversion()
 {
     if (m_localizationJson.empty())
     {
-        appendLog("错误：翻译数据为空,汉化中止;");
+        appendLog("错误:翻译数据为空,汉化中止;");
         QMetaObject::invokeMethod(this, [this]()
                                   { showHandMessageBox(QMessageBox::Critical, "错误",
                                                        "翻译数据为空,汉化中止;"); });
@@ -1018,9 +1018,9 @@ void MainWindow::doCustomConversion()
     if (!ok1 || !ok2)
     {
         if (!ok1)
-            appendLog("错误：main.js 基础替换失败;");
+            appendLog("错误:main.js 基础替换失败;");
         if (!ok2)
-            appendLog("错误：renderer.js 基础替换失败;");
+            appendLog("错误:renderer.js 基础替换失败;");
     }
 
     // 用户选择的增强项
@@ -1051,7 +1051,7 @@ void MainWindow::doDirectReplacement()
     std::string mainContent, rendererContent;
     if (!loadPrebuiltJs(m_targetGhVersion, mainContent, rendererContent))
     {
-        appendLog("快速汉化失败：无法加载预汉化文件;");
+        appendLog("快速汉化失败:无法加载预汉化文件;");
         QMetaObject::invokeMethod(this, [this]()
                                   {
             showHandMessageBox(QMessageBox::Warning, "快速汉化失败",
@@ -1073,14 +1073,14 @@ void MainWindow::doDirectReplacement()
     appendLog("快速汉化完成;");
     QMetaObject::invokeMethod(this, [this]()
                               { showHandMessageBox(QMessageBox::Information, "完成",
-                                                   "汉化完成！重启 GitHub Desktop 即可生效;"); });
+                                                   "汉化完成!重启 GitHub Desktop 即可生效;"); });
 }
 
 void MainWindow::doRollback()
 {
     if (IsGitHubDesktopRunning())
     {
-        appendLog("错误：恢复失败,GitHub Desktop 正在运行;");
+        appendLog("错误:恢复失败,GitHub Desktop 正在运行;");
         QMetaObject::invokeMethod(this, [this]()
                                   { showHandMessageBox(QMessageBox::Warning, "提示",
                                                        "检测到 GitHub Desktop 正在运行,请先关闭后再恢复;"); });
@@ -1103,7 +1103,7 @@ void MainWindow::doRollback()
     else
     {
         ok = false;
-        appendLog("错误：main.js.bak 备份文件缺失;");
+        appendLog("错误:main.js.bak 备份文件缺失;");
     }
     if (fs::exists(rendererBak))
     {
@@ -1115,7 +1115,7 @@ void MainWindow::doRollback()
     else
     {
         ok = false;
-        appendLog("错误：renderer.js.bak 备份文件缺失;");
+        appendLog("错误:renderer.js.bak 备份文件缺失;");
     }
 
     if (ok)
@@ -1276,7 +1276,7 @@ bool MainWindow::showSelectItemsDialog()
     dlg.setWindowTitle("选择要应用的汉化优化项");
     QVBoxLayout *layout = new QVBoxLayout(&dlg);
 
-    QLabel *hint = new QLabel("以下为可选的汉化增强功能（如预览版特性等）,请勾选需要启用的项：");
+    QLabel *hint = new QLabel("以下为可选的汉化增强功能(如预览版特性等),请勾选需要启用的项:");
     hint->setStyleSheet("color: #cccccc; margin-bottom: 8px;");
     layout->addWidget(hint);
 
