@@ -315,7 +315,8 @@ OSSL_DEPRECATEDIN_3_1 void OPENSSL_LH_node_usage_stats_bio(const OPENSSL_LHASH *
     lh_##type##_new(unsigned long (*hfn)(const type *), \
                     int (*cfn)(const type *, const type *)) \
     { \
-        return (LHASH_OF(type) *)OPENSSL_LH_set_thunks(OPENSSL_LH_new((OPENSSL_LH_HASHFUNC)hfn, (OPENSSL_LH_COMPFUNC)cfn), \
+        return (LHASH_OF(type) *)OPENSSL_LH_set_thunks(OPENSSL_LH_new((OPENSSL_LH_HASHFUNC)hfn, \
+                (OPENSSL_LH_COMPFUNC)cfn), \
                                 lh_##type##_hfn_thunk, lh_##type##_cfn_thunk, \
                                 lh_##type##_doall_thunk, \
                                 lh_##type##_doall_arg_thunk); \
@@ -360,35 +361,53 @@ OSSL_DEPRECATEDIN_3_1 void OPENSSL_LH_node_usage_stats_bio(const OPENSSL_LHASH *
     LHASH_OF(type)
 
 DEFINE_LHASH_OF_INTERNAL(OPENSSL_STRING);
-#define lh_OPENSSL_STRING_new(hfn, cmp) ((LHASH_OF(OPENSSL_STRING) *)OPENSSL_LH_set_thunks(OPENSSL_LH_new(ossl_check_OPENSSL_STRING_lh_hashfunc_type(hfn), ossl_check_OPENSSL_STRING_lh_compfunc_type(cmp)), lh_OPENSSL_STRING_hash_thunk, lh_OPENSSL_STRING_comp_thunk, lh_OPENSSL_STRING_doall_thunk, lh_OPENSSL_STRING_doall_arg_thunk))
+#define lh_OPENSSL_STRING_new(hfn, cmp) ((LHASH_OF(OPENSSL_STRING) \
+        *)OPENSSL_LH_set_thunks(OPENSSL_LH_new(ossl_check_OPENSSL_STRING_lh_hashfunc_type(hfn), \
+        ossl_check_OPENSSL_STRING_lh_compfunc_type(cmp)), lh_OPENSSL_STRING_hash_thunk, lh_OPENSSL_STRING_comp_thunk, \
+        lh_OPENSSL_STRING_doall_thunk, lh_OPENSSL_STRING_doall_arg_thunk))
 #define lh_OPENSSL_STRING_free(lh) OPENSSL_LH_free(ossl_check_OPENSSL_STRING_lh_type(lh))
 #define lh_OPENSSL_STRING_flush(lh) OPENSSL_LH_flush(ossl_check_OPENSSL_STRING_lh_type(lh))
-#define lh_OPENSSL_STRING_insert(lh, ptr) ((OPENSSL_STRING *)OPENSSL_LH_insert(ossl_check_OPENSSL_STRING_lh_type(lh), ossl_check_OPENSSL_STRING_lh_plain_type(ptr)))
-#define lh_OPENSSL_STRING_delete(lh, ptr) ((OPENSSL_STRING *)OPENSSL_LH_delete(ossl_check_OPENSSL_STRING_lh_type(lh), ossl_check_const_OPENSSL_STRING_lh_plain_type(ptr)))
-#define lh_OPENSSL_STRING_retrieve(lh, ptr) ((OPENSSL_STRING *)OPENSSL_LH_retrieve(ossl_check_OPENSSL_STRING_lh_type(lh), ossl_check_const_OPENSSL_STRING_lh_plain_type(ptr)))
+#define lh_OPENSSL_STRING_insert(lh, ptr) ((OPENSSL_STRING *)OPENSSL_LH_insert(ossl_check_OPENSSL_STRING_lh_type(lh), \
+        ossl_check_OPENSSL_STRING_lh_plain_type(ptr)))
+#define lh_OPENSSL_STRING_delete(lh, ptr) ((OPENSSL_STRING *)OPENSSL_LH_delete(ossl_check_OPENSSL_STRING_lh_type(lh), \
+        ossl_check_const_OPENSSL_STRING_lh_plain_type(ptr)))
+#define lh_OPENSSL_STRING_retrieve(lh, ptr) ((OPENSSL_STRING *)OPENSSL_LH_retrieve(ossl_check_OPENSSL_STRING_lh_type(lh), \
+        ossl_check_const_OPENSSL_STRING_lh_plain_type(ptr)))
 #define lh_OPENSSL_STRING_error(lh) OPENSSL_LH_error(ossl_check_OPENSSL_STRING_lh_type(lh))
 #define lh_OPENSSL_STRING_num_items(lh) OPENSSL_LH_num_items(ossl_check_OPENSSL_STRING_lh_type(lh))
-#define lh_OPENSSL_STRING_node_stats_bio(lh, out) OPENSSL_LH_node_stats_bio(ossl_check_const_OPENSSL_STRING_lh_type(lh), out)
-#define lh_OPENSSL_STRING_node_usage_stats_bio(lh, out) OPENSSL_LH_node_usage_stats_bio(ossl_check_const_OPENSSL_STRING_lh_type(lh), out)
+#define lh_OPENSSL_STRING_node_stats_bio(lh, out) OPENSSL_LH_node_stats_bio(ossl_check_const_OPENSSL_STRING_lh_type(lh), \
+        out)
+#define lh_OPENSSL_STRING_node_usage_stats_bio(lh, out) \
+        OPENSSL_LH_node_usage_stats_bio(ossl_check_const_OPENSSL_STRING_lh_type(lh), out)
 #define lh_OPENSSL_STRING_stats_bio(lh, out) OPENSSL_LH_stats_bio(ossl_check_const_OPENSSL_STRING_lh_type(lh), out)
 #define lh_OPENSSL_STRING_get_down_load(lh) OPENSSL_LH_get_down_load(ossl_check_OPENSSL_STRING_lh_type(lh))
 #define lh_OPENSSL_STRING_set_down_load(lh, dl) OPENSSL_LH_set_down_load(ossl_check_OPENSSL_STRING_lh_type(lh), dl)
-#define lh_OPENSSL_STRING_doall(lh, dfn) OPENSSL_LH_doall(ossl_check_OPENSSL_STRING_lh_type(lh), ossl_check_OPENSSL_STRING_lh_doallfunc_type(dfn))
+#define lh_OPENSSL_STRING_doall(lh, dfn) OPENSSL_LH_doall(ossl_check_OPENSSL_STRING_lh_type(lh), \
+        ossl_check_OPENSSL_STRING_lh_doallfunc_type(dfn))
 DEFINE_LHASH_OF_INTERNAL(OPENSSL_CSTRING);
-#define lh_OPENSSL_CSTRING_new(hfn, cmp) ((LHASH_OF(OPENSSL_CSTRING) *)OPENSSL_LH_set_thunks(OPENSSL_LH_new(ossl_check_OPENSSL_CSTRING_lh_hashfunc_type(hfn), ossl_check_OPENSSL_CSTRING_lh_compfunc_type(cmp)), lh_OPENSSL_CSTRING_hash_thunk, lh_OPENSSL_CSTRING_comp_thunk, lh_OPENSSL_CSTRING_doall_thunk, lh_OPENSSL_CSTRING_doall_arg_thunk))
+#define lh_OPENSSL_CSTRING_new(hfn, cmp) ((LHASH_OF(OPENSSL_CSTRING) \
+        *)OPENSSL_LH_set_thunks(OPENSSL_LH_new(ossl_check_OPENSSL_CSTRING_lh_hashfunc_type(hfn), \
+        ossl_check_OPENSSL_CSTRING_lh_compfunc_type(cmp)), lh_OPENSSL_CSTRING_hash_thunk, lh_OPENSSL_CSTRING_comp_thunk, \
+        lh_OPENSSL_CSTRING_doall_thunk, lh_OPENSSL_CSTRING_doall_arg_thunk))
 #define lh_OPENSSL_CSTRING_free(lh) OPENSSL_LH_free(ossl_check_OPENSSL_CSTRING_lh_type(lh))
 #define lh_OPENSSL_CSTRING_flush(lh) OPENSSL_LH_flush(ossl_check_OPENSSL_CSTRING_lh_type(lh))
-#define lh_OPENSSL_CSTRING_insert(lh, ptr) ((OPENSSL_CSTRING *)OPENSSL_LH_insert(ossl_check_OPENSSL_CSTRING_lh_type(lh), ossl_check_OPENSSL_CSTRING_lh_plain_type(ptr)))
-#define lh_OPENSSL_CSTRING_delete(lh, ptr) ((OPENSSL_CSTRING *)OPENSSL_LH_delete(ossl_check_OPENSSL_CSTRING_lh_type(lh), ossl_check_const_OPENSSL_CSTRING_lh_plain_type(ptr)))
-#define lh_OPENSSL_CSTRING_retrieve(lh, ptr) ((OPENSSL_CSTRING *)OPENSSL_LH_retrieve(ossl_check_OPENSSL_CSTRING_lh_type(lh), ossl_check_const_OPENSSL_CSTRING_lh_plain_type(ptr)))
+#define lh_OPENSSL_CSTRING_insert(lh, ptr) ((OPENSSL_CSTRING *)OPENSSL_LH_insert(ossl_check_OPENSSL_CSTRING_lh_type(lh), \
+        ossl_check_OPENSSL_CSTRING_lh_plain_type(ptr)))
+#define lh_OPENSSL_CSTRING_delete(lh, ptr) ((OPENSSL_CSTRING *)OPENSSL_LH_delete(ossl_check_OPENSSL_CSTRING_lh_type(lh), \
+        ossl_check_const_OPENSSL_CSTRING_lh_plain_type(ptr)))
+#define lh_OPENSSL_CSTRING_retrieve(lh, ptr) ((OPENSSL_CSTRING \
+        *)OPENSSL_LH_retrieve(ossl_check_OPENSSL_CSTRING_lh_type(lh), ossl_check_const_OPENSSL_CSTRING_lh_plain_type(ptr)))
 #define lh_OPENSSL_CSTRING_error(lh) OPENSSL_LH_error(ossl_check_OPENSSL_CSTRING_lh_type(lh))
 #define lh_OPENSSL_CSTRING_num_items(lh) OPENSSL_LH_num_items(ossl_check_OPENSSL_CSTRING_lh_type(lh))
-#define lh_OPENSSL_CSTRING_node_stats_bio(lh, out) OPENSSL_LH_node_stats_bio(ossl_check_const_OPENSSL_CSTRING_lh_type(lh), out)
-#define lh_OPENSSL_CSTRING_node_usage_stats_bio(lh, out) OPENSSL_LH_node_usage_stats_bio(ossl_check_const_OPENSSL_CSTRING_lh_type(lh), out)
+#define lh_OPENSSL_CSTRING_node_stats_bio(lh, out) \
+        OPENSSL_LH_node_stats_bio(ossl_check_const_OPENSSL_CSTRING_lh_type(lh), out)
+#define lh_OPENSSL_CSTRING_node_usage_stats_bio(lh, out) \
+        OPENSSL_LH_node_usage_stats_bio(ossl_check_const_OPENSSL_CSTRING_lh_type(lh), out)
 #define lh_OPENSSL_CSTRING_stats_bio(lh, out) OPENSSL_LH_stats_bio(ossl_check_const_OPENSSL_CSTRING_lh_type(lh), out)
 #define lh_OPENSSL_CSTRING_get_down_load(lh) OPENSSL_LH_get_down_load(ossl_check_OPENSSL_CSTRING_lh_type(lh))
 #define lh_OPENSSL_CSTRING_set_down_load(lh, dl) OPENSSL_LH_set_down_load(ossl_check_OPENSSL_CSTRING_lh_type(lh), dl)
-#define lh_OPENSSL_CSTRING_doall(lh, dfn) OPENSSL_LH_doall(ossl_check_OPENSSL_CSTRING_lh_type(lh), ossl_check_OPENSSL_CSTRING_lh_doallfunc_type(dfn))
+#define lh_OPENSSL_CSTRING_doall(lh, dfn) OPENSSL_LH_doall(ossl_check_OPENSSL_CSTRING_lh_type(lh), \
+        ossl_check_OPENSSL_CSTRING_lh_doallfunc_type(dfn))
 
 
 #ifdef  __cplusplus
