@@ -210,6 +210,8 @@ echo 检测到缓存,尝试增量编译...
 set "BUILD_LOG=%TEMP%\gh_build_%RANDOM%.log"
 cmake --build "%PROJECT_DIR%\%BUILD_DIR%" --config Debug > "%BUILD_LOG%" 2>&1
 set "BUILD_ERR=%ERRORLEVEL%"
+:: 统一日志换行为 LF;完整命令见 build.bat 中"增量编译尝试"一段;
+:: 该命令读取日志、把 CRLF 规范为 LF、以无 BOM 写回;失败时中断并清理;
 
 findstr /C:"different than the directory" "%BUILD_LOG%" >nul 2>&1
 if %ERRORLEVEL% equ 0 set "PATH_CHANGED=1"
