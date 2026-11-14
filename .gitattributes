@@ -1,63 +1,51 @@
-###############################################################################
-# Set default behavior to automatically normalize line endings.
-###############################################################################
-* text=auto
+# 默认:所有文本文件统一 LF;Windows 专有脚本另行覆盖
+* text=auto eol=lf
 
-###############################################################################
-# Set default behavior for command prompt diff.
-#
-# This is need for earlier builds of msysgit that does not have it on by
-# default for csharp files.
-# Note: This is only used by command line
-###############################################################################
-#*.cs     diff=csharp
+# 路径模式一律用正斜杠 /;Git 在所有平台按 / 解析,Windows 下写反斜杠无效
 
-###############################################################################
-# Set the merge driver for project and solution files
-#
-# Merging from the command prompt will add diff markers to the files if there
-# are conflicts (Merging from VS is not affected by the settings below, in VS
-# the diff markers are never inserted). Diff markers may cause the following 
-# file extensions to fail to load in VS. An alternative would be to treat
-# these files as binary and thus will always conflict and require user
-# intervention with every merge. To do so, just uncomment the entries below
-###############################################################################
-#*.sln       merge=binary
-#*.csproj    merge=binary
-#*.vbproj    merge=binary
-#*.vcxproj   merge=binary
-#*.vcproj    merge=binary
-#*.dbproj    merge=binary
-#*.fsproj    merge=binary
-#*.lsproj    merge=binary
-#*.wixproj   merge=binary
-#*.modelproj merge=binary
-#*.sqlproj   merge=binary
-#*.wwaproj   merge=binary
+# Web 与脚本源码
+*.js *.mjs *.cjs *.jsx *.ts *.tsx text eol=lf
+*.json *.jsonc *.yaml *.yml *.toml *.xml *.html *.htm text eol=lf
+*.css *.scss *.sass *.less *.vue *.svelte text eol=lf
 
-###############################################################################
-# behavior for image files
-#
-# image files are treated as binary by default.
-###############################################################################
-#*.jpg   binary
-#*.png   binary
-#*.gif   binary
+# 文档与 Qt 工程文件
+*.md *.markdown *.rst *.txt *.adoc text eol=lf
+*.qrc *.ui *.ts *.qm *.evb text eol=lf
 
-###############################################################################
-# diff behavior for common document formats
-# 
-# Convert binary document formats to text before diffing them. This feature
-# is only available from the command line. Turn it on by uncommenting the 
-# entries below.
-###############################################################################
-#*.doc   diff=astextplain
-#*.DOC   diff=astextplain
-#*.docx  diff=astextplain
-#*.DOCX  diff=astextplain
-#*.dot   diff=astextplain
-#*.DOT   diff=astextplain
-#*.pdf   diff=astextplain
-#*.PDF   diff=astextplain
-#*.rtf   diff=astextplain
-#*.RTF   diff=astextplain
+# C / C++ 与构建描述
+*.c *.cc *.cpp *.cxx *.h *.hh *.hpp *.hxx *.inl text eol=lf
+*.cmake CMakeLists.txt *.mk Makefile *.ninja *.d text eol=lf
+*.gradle *.properties *.pro *.java *.kt *.kts text eol=lf
+
+# iOS / Xcode
+*.pbxproj -text
+*.plist *.podspec *.xcconfig *.modulemap *.xcworkspacedata text eol=lf
+Podfile Podfile.lock text eol=lf
+
+# Unix shell 脚本
+*.sh *.bash *.zsh *.fish text eol=lf
+
+# 版本控制与工具配置
+.gitattributes .gitignore .npmignore .editorconfig text eol=lf
+
+# Windows 专有脚本:CRLF
+*.bat *.cmd *.ps1 *.psm1 *.psd1 *.vbs text eol=crlf
+
+# VS 工程文件为文本;若需禁止自动合并,可对下列类型追加 merge=binary
+# *.sln *.vcxproj *.filters *.props *.targets
+
+# 二进制:不做换行符转换
+*.png *.jpg *.jpeg *.gif *.bmp *.ico *.webp binary
+*.woff *.woff2 *.ttf *.otf *.eot binary
+*.mp3 *.mp4 *.wav *.ogg *.webm binary
+*.pdf *.doc *.docx *.xls *.xlsx *.ppt *.pptx binary
+*.obj *.pdb *.ilk *.idb *.exp *.lib *.res *.tlog binary
+*.dll *.exe *.so *.dylib *.a *.o *.node binary
+*.jar *.zip *.tgz *.gz *.tar *.7z *.rar binary
+*.bin *.dat *.modmap *.ninja_deps *.ninja_log *.check_cache binary
+*.lastbuildstate *.recipe *.ddi *.dd *.evb binary
+*.keystore *.jks *.p12 *.mobileprovision binary
+*.framework *.xcframework binary
+
+# 目录整体视为二进制
+ios/libnode/** binary
