@@ -6,9 +6,6 @@
 并且本项目遵循 [语义化版本](https://semver.org/lang/zh-CN);
 
 ## [1.0.30] - 2026-11-14 11:14
-### 适配
-- 适配 npm 12:该版本起不再把未知 CLI 标志转成 `npm_config_*` 环境变量,直接报错;`release.bat`、
-  `build.bat` 中受影响的调用改为环境变量形式;
 
 ### 修复
 - `release.bat` 写 `version.json` 时由 `echo ... >` 改为 PowerShell 写入,消除 cmd 重定向默认注入的
