@@ -4,48 +4,139 @@
 # 路径模式一律用正斜杠 /;Git 在所有平台按 / 解析,Windows 下写反斜杠无效
 
 # Web 与脚本源码
-*.js *.mjs *.cjs *.jsx *.ts *.tsx text eol=lf
-*.json *.jsonc *.yaml *.yml *.toml *.xml *.html *.htm text eol=lf
-*.css *.scss *.sass *.less *.vue *.svelte text eol=lf
+*.js text eol=lf
+*.mjs text eol=lf
+*.cjs text eol=lf
+*.jsx text eol=lf
+*.ts text eol=lf
+*.tsx text eol=lf
+*.json text eol=lf
+*.jsonc text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.toml text eol=lf
+*.xml text eol=lf
+*.html text eol=lf
+*.htm text eol=lf
+*.css text eol=lf
+*.scss text eol=lf
+*.sass text eol=lf
+*.less text eol=lf
+*.vue text eol=lf
+*.svelte text eol=lf
 
 # 文档与 Qt 工程文件
-*.md *.markdown *.rst *.txt *.adoc text eol=lf
-*.qrc *.ui *.ts *.qm *.evb text eol=lf
+*.md text eol=lf
+*.markdown text eol=lf
+*.rst text eol=lf
+*.txt text eol=lf
+*.adoc text eol=lf
+*.qrc text eol=lf
+*.ui text eol=lf
+*.ts text eol=lf
+*.qm text eol=lf
+*.evb text eol=lf
 
 # C / C++ 与构建描述
-*.c *.cc *.cpp *.cxx *.h *.hh *.hpp *.hxx *.inl text eol=lf
-*.cmake CMakeLists.txt *.mk Makefile *.ninja *.d text eol=lf
-*.gradle *.properties *.pro *.java *.kt *.kts text eol=lf
-
-# iOS / Xcode
-*.pbxproj -text
-*.plist *.podspec *.xcconfig *.modulemap *.xcworkspacedata text eol=lf
-Podfile Podfile.lock text eol=lf
+*.c text eol=lf
+*.cc text eol=lf
+*.cpp text eol=lf
+*.cxx text eol=lf
+*.h text eol=lf
+*.hh text eol=lf
+*.hpp text eol=lf
+*.hxx text eol=lf
+*.inl text eol=lf
+*.cmake text eol=lf
+CMakeLists.txt text eol=lf
+*.mk text eol=lf
+Makefile text eol=lf
+*.ninja text eol=lf
+*.d text eol=lf
 
 # Unix shell 脚本
-*.sh *.bash *.zsh *.fish text eol=lf
+*.sh text eol=lf
+*.bash text eol=lf
+*.zsh text eol=lf
+*.fish text eol=lf
 
 # 版本控制与工具配置
-.gitattributes .gitignore .npmignore .editorconfig text eol=lf
+.gitattributes text eol=lf
+.gitignore text eol=lf
+.npmignore text eol=lf
+.editorconfig text eol=lf
 
 # Windows 专有脚本:CRLF
-*.bat *.cmd *.ps1 *.psm1 *.psd1 *.vbs text eol=crlf
-
-# VS 工程文件为文本;若需禁止自动合并,可对下列类型追加 merge=binary
-# *.sln *.vcxproj *.filters *.props *.targets
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+*.psm1 text eol=crlf
+*.psd1 text eol=crlf
+*.vbs text eol=crlf
 
 # 二进制:不做换行符转换
-*.png *.jpg *.jpeg *.gif *.bmp *.ico *.webp binary
-*.woff *.woff2 *.ttf *.otf *.eot binary
-*.mp3 *.mp4 *.wav *.ogg *.webm binary
-*.pdf *.doc *.docx *.xls *.xlsx *.ppt *.pptx binary
-*.obj *.pdb *.ilk *.idb *.exp *.lib *.res *.tlog binary
-*.dll *.exe *.so *.dylib *.a *.o *.node binary
-*.jar *.zip *.tgz *.gz *.tar *.7z *.rar binary
-*.bin *.dat *.modmap *.ninja_deps *.ninja_log *.check_cache binary
-*.lastbuildstate *.recipe *.ddi *.dd *.evb binary
-*.keystore *.jks *.p12 *.mobileprovision binary
-*.framework *.xcframework binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.bmp binary
+*.ico binary
+*.webp binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.otf binary
+*.eot binary
+*.mp3 binary
+*.mp4 binary
+*.wav binary
+*.ogg binary
+*.webm binary
+*.pdf binary
+*.doc binary
+*.docx binary
+*.xls binary
+*.xlsx binary
+*.ppt binary
+*.pptx binary
+*.obj binary
+*.pdb binary
+*.ilk binary
+*.idb binary
+*.exp binary
+*.lib binary
+*.res binary
+*.tlog binary
+*.dll binary
+*.exe binary
+*.so binary
+*.dylib binary
+*.a binary
+*.o binary
+*.node binary
+*.jar binary
+*.zip binary
+*.tgz binary
+*.gz binary
+*.tar binary
+*.7z binary
+*.rar binary
+*.bin binary
+*.dat binary
+*.modmap binary
+*.ninja_deps binary
+*.ninja_log binary
+*.check_cache binary
+*.lastbuildstate binary
+*.recipe binary
+*.ddi binary
+*.dd binary
+*.keystore binary
+*.jks binary
+*.p12 binary
+*.mobileprovision binary
+*.framework binary
+*.xcframework binary
 
 # 目录整体视为二进制
 ios/libnode/** binary

@@ -1,8 +1,8 @@
 ﻿# 🥮 GitHubDesktopToCN
 
-[![GitHub Repo](https://img.shields.io/badge/GitHub-仓库-blue?logo=github&style=flat-square)](https://github.com/OpenFlun/GH-DesktopToCN)
-[![GitHub release](https://img.shields.io/github/v/release/OpenFlun/GH-DesktopToCN?style=flat-square)](https://github.com/OpenFlun/GH-DesktopToCN/releases)
-[![GitHub stars](https://img.shields.io/github/stars/OpenFlun/GH-DesktopToCN?style=flat-square)](https://github.com/OpenFlun/GH-DesktopToCN/stargazers)
+[![GitHub Repo](https://img.shields.io/badge/GitHub-仓库-blue?logo=github&style=flat-square)](https://github.com/AtFlun/GH-DesktopToCN)
+[![GitHub release](https://img.shields.io/github/v/release/AtFlun/GH-DesktopToCN?style=flat-square)](https://github.com/AtFlun/GH-DesktopToCN/releases)
+[![GitHub stars](https://img.shields.io/github/stars/AtFlun/GH-DesktopToCN?style=flat-square)](https://github.com/AtFlun/GH-DesktopToCN/stargazers)
 
 > 这是一个自动替换 GitHub Desktop 中文本为目标语言文本的程序;
 > 优点是对 GitHub Desktop 频繁更新的版本变化兼容性比较高,即便只有一两条条目失去了翻译,也只需手动修改添加即可,项目维护成本较低;
@@ -22,7 +22,7 @@
 
 ## 📦 怎么使用它(最终用户)
 
-1. 前往 [GitHub Releases 页面](https://github.com/OpenFlun/GH-DesktopToCN/releases/latest) 下载:
+1. 前往 [GitHub Releases 页面](https://github.com/AtFlun/GH-DesktopToCN/releases/latest) 下载:
    - 'GitHubDesktopToCN.exe'(单文件版,已包含所有依赖)
    - 'localization.json'(汉化映射文件,如不需要自定义翻译可忽略)
 

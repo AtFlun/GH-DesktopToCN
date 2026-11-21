@@ -668,7 +668,7 @@ void MainWindow::onCheckUpdate()
     setBusyState(true, "正在检查更新...");
 
     auto manager = new QNetworkAccessManager(this);
-    QNetworkRequest request(QUrl("https://api.github.com/repos/OpenFlun/GH-DesktopToCN/releases?per_page=1"));
+    QNetworkRequest request(QUrl("https://api.github.com/repos/AtFlun/GH-DesktopToCN/releases?per_page=1"));
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
     request.setRawHeader("Accept", "application/vnd.github+json");
 
@@ -679,7 +679,7 @@ void MainWindow::onCheckUpdate()
         setBusyState(false);
 
         QString remoteVer = "获取失败";
-        QString htmlUrl = "https://github.com/OpenFlun/GH-DesktopToCN/releases";
+        QString htmlUrl = "https://github.com/AtFlun/GH-DesktopToCN/releases";
 
         if (reply->error() == QNetworkReply::NoError) {
             QByteArray data = reply->readAll();

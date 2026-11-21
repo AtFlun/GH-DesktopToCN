@@ -36,7 +36,7 @@
 - 项目标点已改为以英文标点为主;
 - 行宽改为以 123 为主,部分超宽表格改为了列表;
 
-[unreleased]: https://github.com/OpenFlun/GH-DesktopToCN/compare/v1.0.30...HEAD
-[1.0.30]: https://github.com/OpenFlun/GH-DesktopToCN/compare/v1.0.29...v1.0.30
-[1.0.29]: https://github.com/OpenFlun/GH-DesktopToCN/compare/v1.0.28...v1.0.29
-[1.0.28]: https://github.com/OpenFlun/GH-DesktopToCN/compare/v1.0.27...v1.0.28
+[unreleased]: https://github.com/AtFlun/GH-DesktopToCN/compare/v1.0.30...HEAD
+[1.0.30]: https://github.com/AtFlun/GH-DesktopToCN/compare/v1.0.29...v1.0.30
+[1.0.29]: https://github.com/AtFlun/GH-DesktopToCN/compare/v1.0.28...v1.0.29
+[1.0.28]: https://github.com/AtFlun/GH-DesktopToCN/compare/v1.0.27...v1.0.28
